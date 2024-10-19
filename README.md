@@ -14,15 +14,17 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
 
 # now
 * Implement assistant-to-assistant responses
-* Set up multiple GPT personalities
 
 # next
+* voice chat broke? doesn't display prompt
+* Set up multiple GPT personalities
 * Create a dropdown setting to switch between endpoints
 * Implement a conversation flow between two different GPTs
 * Add a visual indicator for which GPT is speaking
 * Implement error handling for API failures
 
 # soon
+* make the chat app respond to last 2 messages
 * Check balance on personal account OpenAI key
 * Implement rate limiting to prevent excessive API usage
 * Add user authentication and individual API key management
