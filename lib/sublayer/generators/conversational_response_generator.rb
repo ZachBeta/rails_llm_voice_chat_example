@@ -14,6 +14,8 @@ module Sublayer
         super
       end
 
+      private
+
       def prompt
         <<-PROMPT
           #{@conversational_context}

@@ -8,3 +8,10 @@
 
 <!-- Add your form for new messages here -->
 
+<div class="text-input-form">
+  <%= form_with(url: send_text_message_conversation_path(@conversation), local: true) do |form| %>
+    <%= form.text_area :message, placeholder: "Type your message here...", rows: 3 %>
+    <%= form.submit "Send Text Message" %>
+  <% end %>
+</div>
+

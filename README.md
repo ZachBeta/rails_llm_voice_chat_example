@@ -9,11 +9,12 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
 * improve performance of query
   * attempted, seems to only work on fresh refresh
 * messages in scrollable frame
+* set up a git remote repo
 
 # now
 # next
 * allow a text form based message
+* have two GPTs react to eachother
 
 # soon
-* set up a git remote repo
 * check balance on personal account openai key
