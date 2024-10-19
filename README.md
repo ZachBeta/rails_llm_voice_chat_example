@@ -10,11 +10,13 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
   * attempted, seems to only work on fresh refresh
 * messages in scrollable frame
 * set up a git remote repo
+* allow a text form based message
 
 # now
 # next
-* allow a text form based message
-* have two GPTs react to eachother
+* allow an assistant to respond to an assistant
+* have two different GPTs react to eachother
+* dropdown setting to switch between two endpoints?
 
 # soon
 * check balance on personal account openai key
