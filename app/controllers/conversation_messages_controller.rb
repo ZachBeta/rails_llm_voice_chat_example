@@ -14,25 +14,22 @@ class ConversationMessagesController < ApplicationController
   def create
     @conversation = Conversation.find(params[:conversation_id])
 
-    # Convert conversational context to an easy to use format
-    conversational_context = @conversation.messages.map { |message| {role: message.role, content: message.content} }
-
     # Convert audio data to text
     text = Sublayer::Actions::SpeechToTextAction.new(params[:audio_data]).call
+    user_message = @conversation.messages.create(role: "user", content: text)
 
+
+    # Convert conversational context to an easy to use format
+    conversational_context = @conversation.messages.map { |message| {role: message.role, content: message.content} }
     # Generate conversational response
     output_text = Sublayer::Generators::ConversationalResponseGenerator.new(conversation_context: conversational_context, latest_request: text).generate
-
     # Convert text to audio data
     speech = Sublayer::Actions::TextToSpeechAction.new(output_text).call
-
     # Create and broadcast new messages
-    user_message = @conversation.messages.create(role: "user", content: text)
     assistant_message = @conversation.messages.create(role: "assistant", content: output_text)
 
     broadcast_new_message(user_message)
     broadcast_new_message(assistant_message)
-
     send_data speech, type: "audio/wav", disposition: "inline"
   end
 

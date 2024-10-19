@@ -8,8 +8,9 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
 * add text views of conversation messages
 
 # next
+* improve performance of query
 * allow a text form based message
 
 # soon
-* improve performance of query
 * set up a git remote repo
+* check balance on personal account openai key
