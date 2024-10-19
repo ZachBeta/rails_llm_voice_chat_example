@@ -17,7 +17,7 @@ class ConversationMessagesController < ApplicationController
     # Convert audio data to text
     text = Sublayer::Actions::SpeechToTextAction.new(params[:audio_data]).call
     user_message = @conversation.messages.create(role: "user", content: text)
-
+    broadcast_new_message(user_message)
 
     # Convert conversational context to an easy to use format
     conversational_context = @conversation.messages.map { |message| {role: message.role, content: message.content} }
@@ -28,7 +28,6 @@ class ConversationMessagesController < ApplicationController
     # Create and broadcast new messages
     assistant_message = @conversation.messages.create(role: "assistant", content: output_text)
 
-    broadcast_new_message(user_message)
     broadcast_new_message(assistant_message)
     send_data speech, type: "audio/wav", disposition: "inline"
   end
