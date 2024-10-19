@@ -13,10 +13,17 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
 * allow a text form based message
 
 # now
+* Implement assistant-to-assistant responses
+* Set up multiple GPT personalities
+
 # next
-* allow an assistant to respond to an assistant
-* have two different GPTs react to eachother
-* dropdown setting to switch between two endpoints?
+* Create a dropdown setting to switch between endpoints
+* Implement a conversation flow between two different GPTs
+* Add a visual indicator for which GPT is speaking
+* Implement error handling for API failures
 
 # soon
-* check balance on personal account openai key
+* Check balance on personal account OpenAI key
+* Implement rate limiting to prevent excessive API usage
+* Add user authentication and individual API key management
+* Create a dashboard for conversation history and analytics
