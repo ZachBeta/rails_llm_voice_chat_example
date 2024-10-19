@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <div>
+      <%= yield %>
+    </div>
     <div data-controller="audio-upload" data-audio-upload-conversation-id-value="<%= @conversation.id %>">
       <button data-action="mousedown->audio-upload#startRecording mouseup->audio-upload#stopRecording touchstart->audio-upload#startRecording touchend->audio-upload#stopRecording">
         Press and Hold to Record
@@ -18,9 +21,6 @@
       <div data-audio-upload-target="status"></div>
       <!-- clear button -->
       <button data-action="click->audio-upload#clearSession">Clear</button
-    </div>
-    <div>
-      <%= yield %>
     </div>
   </body>
 </html>
