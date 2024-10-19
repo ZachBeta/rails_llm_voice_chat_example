@@ -3,6 +3,8 @@ require "pry"
 require "json"
 
 class ConversationMessagesController < ApplicationController
+  include ActionView::RecordIdentifier
+
   def clear
     session[:conversation_context] = nil
 
@@ -10,10 +12,10 @@ class ConversationMessagesController < ApplicationController
   end
 
   def create
-    conversation = Conversation.find(params[:conversation_id])
+    @conversation = Conversation.find(params[:conversation_id])
 
     # Convert conversational context to an easy to use format
-    conversational_context = conversation.messages.map { |message| {role: message.role, content: message.content} }
+    conversational_context = @conversation.messages.map { |message| {role: message.role, content: message.content} }
 
     # Convert audio data to text
     text = Sublayer::Actions::SpeechToTextAction.new(params[:audio_data]).call
@@ -24,10 +26,24 @@ class ConversationMessagesController < ApplicationController
     # Convert text to audio data
     speech = Sublayer::Actions::TextToSpeechAction.new(output_text).call
 
-    # Store conversation context for next message
-    conversation.messages << Message.new(conversation: conversation, role: "user", content: text)
-    conversation.messages << Message.new(conversation: conversation, role: "assistant", content: output_text)
+    # Create and broadcast new messages
+    user_message = @conversation.messages.create(role: "user", content: text)
+    assistant_message = @conversation.messages.create(role: "assistant", content: output_text)
+
+    broadcast_new_message(user_message)
+    broadcast_new_message(assistant_message)
 
     send_data speech, type: "audio/wav", disposition: "inline"
+  end
+
+  private
+
+  def broadcast_new_message(message)
+    Turbo::StreamsChannel.broadcast_append_to(
+      @conversation,
+      target: "conversation_messages",
+      partial: "messages/message",
+      locals: { message: message }
+    )
   end
 end

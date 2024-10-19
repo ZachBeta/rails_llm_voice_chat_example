@@ -1,0 +1,10 @@
+<h1>Conversation</h1>
+
+<%= turbo_stream_from @conversation %>
+
+<div id="conversation_messages">
+  <%= render @conversation.messages %>
+</div>
+
+<!-- Add your form for new messages here -->
+
