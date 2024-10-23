@@ -11,15 +11,20 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
 * messages in scrollable frame
 * set up a git remote repo
 * allow a text form based message
-
-# now
-* switch this to be record on press, stop on press rther than on hold
+* switch this to be record on press, stop on press rather than on hold
 * save the transcript
 * process
   * [x] skip the voice response, but do keep the LLM request
   * voice is ok actually, it only summarizes at end of meeting
   * pass the result to a prompt, allow the prompt to be edited?
     * it's ok to have it hard coded for now in ruby land
+
+# now
+* fix text message version - needs full context so far
+* allow better markdown to UI rendering
+* improve prompt to summarize with text from 
+
+* sublayer does not appear to be working how I had hoped it would
 
 # next
 * rolling transcription

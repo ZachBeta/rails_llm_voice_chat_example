@@ -2,7 +2,7 @@
   <div class="message <%= message.role %>">
     <b><%= message.role %>:</b> 
     <p>
-      <%= message.content %>
+      <%= markdown_format(message.content) %>
     </p>
   </div>
 <% end %>

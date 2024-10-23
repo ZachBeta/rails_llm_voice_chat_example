@@ -3,7 +3,7 @@ module Sublayer
     class ConversationalResponseGenerator < Base
       llm_output_adapter type: :single_string,
         name: "response_text",
-        description: "The response to the latest request from the user"
+        description: "The response to the full conversation context and latest request from the user"
 
       def initialize(conversation_context:, latest_request:)
         @conversation_context = conversation_context
@@ -11,6 +11,10 @@ module Sublayer
       end
 
       def generate
+        puts "=" * 100
+        puts "Generating response for conversation context: \n #{@conversation_context}"
+        puts "Latest request: \n #{@latest_request}"
+        puts "=" * 100
         super
       end
 
