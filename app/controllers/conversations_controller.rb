@@ -3,6 +3,11 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find_or_create_by(id: params[:id])
   end
 
+  def generate_llm_response(conversation, text)
+    conversational_context = build_conversation_context(conversation)
+    Sublayer::Generators::ConversationalResponseGenerator.new(conversation_context: conversational_context, latest_request: text).generate
+  end
+
   def send_text_message
     @conversation = Conversation.find(params[:id])
     message_text = params[:message]

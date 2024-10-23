@@ -13,9 +13,19 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
 * allow a text form based message
 
 # now
-* Implement assistant-to-assistant responses
+* switch this to be record on press, stop on press rther than on hold
+* save the transcript
+* process
+  * [x] skip the voice response, but do keep the LLM request
+  * voice is ok actually, it only summarizes at end of meeting
+  * pass the result to a prompt, allow the prompt to be edited?
+    * it's ok to have it hard coded for now in ruby land
 
 # next
+* rolling transcription
+* make the chat app respond to last 2 messages
+  * create another generator with a slightly different prompt?
+* Implement assistant-to-assistant responses
 * voice chat broke? doesn't display prompt
 * Set up multiple GPT personalities
 * Create a dropdown setting to switch between endpoints
@@ -24,8 +34,8 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
 * Implement error handling for API failures
 
 # soon
-* make the chat app respond to last 2 messages
 * Check balance on personal account OpenAI key
 * Implement rate limiting to prevent excessive API usage
 * Add user authentication and individual API key management
 * Create a dashboard for conversation history and analytics
+
