@@ -15,8 +15,18 @@
       <%= yield %>
     </div>
     <div data-controller="audio-upload" data-audio-upload-conversation-id-value="<%= @conversation.id %>">
-      <button data-action="mousedown->audio-upload#startRecording mouseup->audio-upload#stopRecording touchstart->audio-upload#startRecording touchend->audio-upload#stopRecording">
-        Press and Hold to Record
+      <button 
+        data-action="mousedown->audio-upload#startRecording 
+        touchstart->audio-upload#startRecording 
+        touchend->audio-upload#stopRecording">
+        Start Recording
+      </button>
+      <button 
+        data-action="
+        click->audio-upload#stopRecording 
+        touchstart->audio-upload#startRecording 
+        touchend->audio-upload#stopRecording">
+        Stop Recording
       </button>
       <div data-audio-upload-target="status"></div>
       <!-- clear button -->
