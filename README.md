@@ -18,13 +18,18 @@ OpenAI's Speech to Text, Text to Speech APIs and gpt-4-turbo.
   * voice is ok actually, it only summarizes at end of meeting
   * pass the result to a prompt, allow the prompt to be edited?
     * it's ok to have it hard coded for now in ruby land
+* allow better markdown to UI rendering
+  * first pass with rails is built
+* use sublayer gem locally?
+  * was able to edit gem in place
+* sublayer does not appear to be working how I had hoped it would
+  * small typo in sample code
 
 # now
 * fix text message version - needs full context so far
-* allow better markdown to UI rendering
 * improve prompt to summarize with text from 
 
-* sublayer does not appear to be working how I had hoped it would
+* summary git commit message using llm
 
 # next
 * rolling transcription

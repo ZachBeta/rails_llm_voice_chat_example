@@ -11,10 +11,6 @@ module Sublayer
       end
 
       def generate
-        puts "=" * 100
-        puts "Generating response for conversation context: \n #{@conversation_context}"
-        puts "Latest request: \n #{@latest_request}"
-        puts "=" * 100
         super
       end
 
@@ -22,7 +18,7 @@ module Sublayer
 
       def prompt
         <<-PROMPT
-          #{@conversational_context}
+          #{@conversation_context}
           #{@latest_request}
         PROMPT
       end
